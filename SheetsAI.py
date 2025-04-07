@@ -9,17 +9,18 @@
 # Step 5:  Add AI to generate SQL Queries
 
 import sqlite3
+from query_generator import QueryGenerator
 import csv
 import os
 import pandas as pd
 
-# Step 1:  Load CSV Files into SQLLite
-#First i want to intialize the database if it doesn not exist
 class SheetsAI:
-    def __init__(self):
-        self.db_name = 'SheetsAI.db'
+    def __init__(self, db_name='SheetsAI.db', api_key=None):
+        '''Constructor to initialize the database connection and AI query generator'''
+        self.db_name = db_name
         self.connection = sqlite3.connect(self.db_name)
         self.cursor = self.connection.cursor()
+        self.query_generator = QueryGenerator(api_key) if api_key else None
 
     def table_exists(self, table_name):
         '''Function that checks if a table exists in the database'''
@@ -56,6 +57,23 @@ class SheetsAI:
             # If the table does not exist, create it
             print(f"Table does not exist yet, creating new table: {table_name}.")
             df.to_sql(table_name, self.connection, if_exists='replace', index=False)
+
+    def execute_sql_query(self, query):
+        '''Function that executes an SQL query'''
+        try:
+            self.cursor.execute(query)
+            return self.cursor.fetchall()
+        except sqlite3.Error as e:
+            return f"SQL Error: {e}"
+    
+    def ask_database(self, user_prompt, table_name):
+        '''Function that takes a user prompt and generates an SQL query'''
+        if not self.query_generator:
+            return "AI query generator has not been intialized. Please provide a valid key."
+        
+        sql_query = self.query_generator.generate_sql_query(user_prompt, table_name)
+        print(f"Generated SQL Query: {sql_query}")
+        return self.execute_sql_query(sql_query)
 
     def close_connection(self):
         '''Function that closes the connection to the database'''
