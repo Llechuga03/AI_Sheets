@@ -8,6 +8,7 @@
 
 ## 🌟 Highlights
 The project follows the following five steps to achieve it's goals while utilizing a basic CLI. 
+
     - Step 1:  Load CSV Files into SQLLite
     - Step 2:  Create Tables Dynamically from CSV 
     - Step 3:  Handle Schema Conflicts 
@@ -16,6 +17,7 @@ The project follows the following five steps to achieve it's goals while utilizi
 
 ## Usage Instructions
 In order to use the program, follow the instructions below. Note, the program may take up to 15 seconds to run upon intial call.
+
     1. Clone this repository via copying the URL or downloading the zip file.
     2. Install the necessary requirements once you have cloned and opened the repo,
     ``` bash
