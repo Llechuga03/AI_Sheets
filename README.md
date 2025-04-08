@@ -9,22 +9,25 @@
 ## 🌟 Highlights
 The project follows the following five steps to achieve it's goals while utilizing a basic CLI. 
 
-    - Step 1:  Load CSV Files into SQLLite
-    - Step 2:  Create Tables Dynamically from CSV 
-    - Step 3:  Handle Schema Conflicts 
-    - Step 4:  Simulate AI using input (the input to be schemas)
-    - Step 5:  Utilizie GPT-4o model to generate SQL Queries and then execute them
+    Step 1:  Load CSV Files into SQLLite
+    Step 2:  Create Tables Dynamically from CSV 
+    Step 3:  Handle Schema Conflicts 
+    Step 4:  Simulate AI using input (the input to be schemas)
+    Step 5:  Utilizie GPT-4o model to generate SQL Queries and then execute them
 
 ## Usage Instructions
 In order to use the program, follow the instructions below. Note, the program may take up to 15 seconds to run upon intial call.
 
-    1. Clone this repository via copying the URL or downloading the zip file.
-    2. Install the necessary requirements once you have cloned and opened the repo,
-    ``` bash
-    pip install -r requirements.txt
-    ```
-    3. Run the main program and follow the instructions displayed on your terminal.
-    ``` bash
-    python user_program.py
-    ```
+ 1. Clone this repository via copying the URL or downloading the zip file.
+ 2. Install the necessary requirements once you have cloned and opened the repo,
+    
+     ``` bash
+     pip install -r requirements.txt
+     ```
+
+3. Run the main program and follow the instructions displayed on your terminal.
+   
+   ``` bash
+   python user_program.py
+   ```
     
