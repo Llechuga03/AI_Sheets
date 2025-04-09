@@ -63,7 +63,6 @@ class SheetsAI:
         
         schema = self.get_table_schema(table_name)
         sql_query = self.query_generator.generate_sql_query(user_prompt, table_name, schema)
-        print(f"Generated SQL Query: {sql_query}")
         return self.execute_sql_query(sql_query)
     
     def list_tables(self):

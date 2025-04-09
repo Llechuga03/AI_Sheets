@@ -1,30 +1,47 @@
 import openai
+import os
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 # Note to users: This code was written by OpenAI's GPT-4 model.
 
 class QueryGenerator:
-    def __init__(self, api_key):
-        openai.api_key = api_key
+    def __init__(self, api_key=None):
+        '''Constructor to initialize the OpenAI API key'''
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+        self.api_key = openai.api_key
 
     def generate_sql_query(self, user_prompt, table_name, schema=None):
-        """Use OpenAI to convert natural language into an SQL query."""
-        column_info = ", ".join([f"{col} ({dtype})" for col, dtype in schema.items()]) if schema else "unknown columns"
-    
-        prompt = f"""
-        You are an AI assistant that converts natural language questions into SQL queries.
-        The user is working with an SQLite database. The table name is '{table_name}'.
-        The table contains the following columns: {column_info}.
+        from openai import OpenAI
+        client = OpenAI(api_key=self.api_key)
 
-        Convert the following user request into an SQL query.
-    
-        User Input: {user_prompt}
-        SQL Query:
-        """
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are an AI assistant that converts natural language questions into SQL queries. "
+                    "The user is working with an SQLite database."
+                ),
+            },
+            {
+                "role": "user",
+                "content": f"The table name is '{table_name}' and its schema is: {schema}. "
+                f"Now generate an SQL query for: {user_prompt}",
+            },
+        ]
 
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "system", "content": prompt}],
-            temperature=0
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            temperature=0,
         )
 
-        return response["choices"][0]["message"]["content"].strip()
+        raw_query = response.choices[0].message.content.strip()
+
+        # Remove code block markers if they exist
+        if raw_query.startswith("```"):
+            raw_query = "\n".join(line for line in raw_query.splitlines() if not line.strip().startswith("```"))
+
+        return raw_query
+
 
