@@ -18,6 +18,9 @@ The project follows the following five steps to achieve it's goals while utilizi
 ## Have your own OpenAI API Key?
 <p>For users that have their own OpenAI API key, you can enter this key in the .yourenv text file and use the application as shown in the demo video.</p>
 
+## Video Demo
+<p>Following this link will take you to a video demo of the application. This is mainly for users who don't have an OpenAI key or for those who just want a "relatively" quick demonstration of how the application works. <a href="https://youtu.be/9PxT78pqYMk" alt="Demo of application">Click here for Demo</a></p>
+
 ## Usage Instructions
 In order to use the program, follow the instructions below. Note, the program may take up to 10 seconds to run upon intial call.
 
