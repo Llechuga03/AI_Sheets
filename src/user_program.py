@@ -13,7 +13,7 @@ import sqlite3
 
 def get_api_key():
     """Function to get the OpenAI API key from the user."""
-    return os.getenv("OPENAI_API_KEY")
+    return os.getenv("OPENAI_API_KEY") or os.getenv("YOUR_OPEN_API_KEY")
 
 def main():
     print("Welcome to SheetsAI!")
@@ -34,7 +34,7 @@ def main():
     print("4. Exit")
     print("5. Help (show this message again)")
     print("--------------------------")
-    
+
     # Main loop to handle user actions
     while True:
         action = input("Please select an action (1-5): ").strip()
