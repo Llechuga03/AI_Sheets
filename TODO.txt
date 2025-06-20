@@ -1,4 +1,1 @@
 1. Still need to figure out how to package this all to make it easier for users to use the program. 
-2. Need to figure out if the api_key I have right now can be used by other users or if they need their own.
-If user needs their own, need to include detailed steps on how to do so and how to implement on the user side
-once the program is cloned to use.

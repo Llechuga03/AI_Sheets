@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sheetsai"
+version = "0.1.0"
+description = "Natural language interface for querying CSV files via SQLite"
+authors = [
+    { name="Logan Lechuga", email="llechuga@bu.edu" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "BU"}
+dependencies = [
+  "openai>=1.0.0",
+  "pandas",
+  "python-dotenv"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/sheetsai"
+"Bug Tracker" = "https://github.com/yourusername/sheetsai/issues"
