@@ -11,7 +11,7 @@ class QueryGenerator:
         openai.api_key = os.getenv("OPENAI_API_KEY")
         self.api_key = openai.api_key
 
-    def generate_sql_query(self, user_prompt, table_name, schema=None):
+    def generate_sql_query(self, user_prompt, table_name, schema): #got rid of schema equal to None, might have to change this back
         from openai import OpenAI
         client = OpenAI(api_key=self.api_key)
 

@@ -35,7 +35,6 @@ class SheetsAI:
             # If the table exists, check for schema conflicts
             existing_schema = self.get_table_schema(table_name)
             new_schema = self.get_csv_schema(df)
-            
             # Check for schema conflicts
             if existing_schema != new_schema:
                 print(f"Schema conflict in table: {table_name}. Replacing old data.")
