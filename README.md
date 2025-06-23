@@ -31,7 +31,9 @@ In order to use the program, follow the instructions below. Note, the program ma
      pip install -r requirements.txt
      ```
 
-3. Run the main program and follow the instructions displayed on your terminal.
+3. If you have your own OpenAI API key, create an .env file and create a variable called OPENAI_API_KEY and assign it the key value.
+
+4. Run the main program and follow the instructions displayed on your terminal.
    
    ``` bash
    python user_program.py
