@@ -5,9 +5,9 @@ import os
 import pandas as pd
 
 class SheetsAI:
-    def __init__(self, db_name='SheetsAI.db', api_key=None):
+    def __init__(self, db_name, api_key=None):
         '''Constructor to initialize the database connection and AI query generator'''
-        self.db_name = db_name
+        self.db_name = db_name or "SheetsAI.db"
         self.connection = sqlite3.connect(self.db_name)
         self.cursor = self.connection.cursor()
         self.query_generator = QueryGenerator(api_key) if api_key else None

@@ -13,7 +13,7 @@ import sqlite3
 
 def get_api_key():
     """Function to get the OpenAI API key from the user."""
-    return os.getenv("OPENAI_API_KEY") or os.getenv("YOUR_OPEN_API_KEY")
+    return os.getenv("OPENAI_API_KEY")
 
 def main():
     print("Welcome to SheetsAI!")
@@ -25,7 +25,7 @@ def main():
     # Initialize the SheetsAI class, all we need to pass is the OpenAI API key
     sheets_ai = SheetsAI.SheetsAI(api_key=api_key)
 
-     # Loop to allow the user to import multiple CSV files
+    # Loop to allow the user to import multiple CSV files
     print("Below are the list of availiable action you can take:")
     print("------List of Actions------")
     print("1. Import CSV file")
