@@ -16,12 +16,12 @@ The project follows the following five steps to achieve it's goals while utilizi
     Step 5:  Utilizie GPT-4o model to generate SQL Queries and then execute them
 
 ## Have your own OpenAI API Key?
-<p>For users that have their own OpenAI API key, you can enter this key in the .yourenv text file and use the application as shown in the demo video.</p>
+<p>For users that have their own OpenAI API key, you can enter this key in the .env file and use the application as shown in the demo video.</p>
 
 ## Video Demo
 <p>Following this link will take you to a video demo of the application. This is mainly for users who don't have an OpenAI key or for those who just want a "relatively" quick demonstration of how the application works. <a href="https://youtu.be/9PxT78pqYMk" alt="Demo of application">Click here for Demo</a></p>
 
-## Usage Instructions
+## Usage Instructions -> Cloning the Repo (Reommended)
 In order to use the program, follow the instructions below. Note, the program may take up to 10 seconds to run upon intial call.
 
  1. Clone this repository via copying the URL or downloading the zip file.
@@ -32,10 +32,18 @@ In order to use the program, follow the instructions below. Note, the program ma
      ```
 
 3. If you have your own OpenAI API key, create an .env file and create a variable called OPENAI_API_KEY and assign it the key value.
+4. Add the CSV files you want to query through to the data folder. Note you can delete the CSV files that already exist as those are simply for testing purposes.
 
-4. Run the main program and follow the instructions displayed on your terminal.
+5. Run the main program and follow the instructions displayed on your terminal.
    
    ``` bash
    python user_program.py
    ```
     
+## Usage Instructions -> Docker
+If you want to skip cloning the repository you can simply login to docker from your terminal and then use the following command.
+
+``` bash
+     docker run -it yourusername/sheetsai
+```
+Note to those using the docker setup, some changes still need to be made to allow users to import their own csv files into the data folder. These changes will be made soon.
