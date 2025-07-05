@@ -5,9 +5,12 @@ import os
 import pandas as pd
 
 class SheetsAI:
-    def __init__(self, db_name, api_key=None):
+    def __init__(self, db_name="SheetsAI.db", api_key=None):
         '''Constructor to initialize the database connection and AI query generator'''
-        self.db_name = db_name or "SheetsAI.db"
+        # Database is stored in the data folder
+        db_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        os.makedirs(db_dir, exist_ok=True)
+        self.db_name = os.path.join(db_dir, db_name)
         self.connection = sqlite3.connect(self.db_name)
         self.cursor = self.connection.cursor()
         self.query_generator = QueryGenerator(api_key) if api_key else None
@@ -35,7 +38,7 @@ class SheetsAI:
             # If the table exists, check for schema conflicts
             existing_schema = self.get_table_schema(table_name)
             new_schema = self.get_csv_schema(df)
-            # Check for schema conflicts
+            # Check for schema conflicts beteween csv file and the existing table
             if existing_schema != new_schema:
                 print(f"Schema conflict in table: {table_name}. Replacing old data.")
                 df.to_sql(table_name, self.connection, if_exists='replace', index=False)
