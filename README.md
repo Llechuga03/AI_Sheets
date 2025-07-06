@@ -21,7 +21,7 @@ The project follows the following five steps to achieve it's goals while utilizi
 ## Video Demo
 <p>Following this link will take you to a video demo of the application. This is mainly for users who don't have an OpenAI key or for those who just want a "relatively" quick demonstration of how the application works. <a href="https://youtu.be/9PxT78pqYMk" alt="Demo of application">Click here for Demo</a></p>
 
-## Usage Instructions -> Cloning the Repo (Reommended)
+## Usage Instructions -> Cloning the Repo
 In order to use the program, follow the instructions below. Note, the program may take up to 10 seconds to run upon intial call.
 
  1. Clone this repository via copying the URL or downloading the zip file.
@@ -41,9 +41,34 @@ In order to use the program, follow the instructions below. Note, the program ma
    ```
     
 ## Usage Instructions -> Docker
-If you want to skip cloning the repository you can simply login to docker from your terminal and then use the following command.
-
+If you want to skip cloning the repository you can simply login to docker from your terminal and then follow the steps below.
+ 1. After logging in, navigate to the directory where your csv files are stored.
+ 2. Next, run the following command which starts up a container with a unique name in the background.
 ``` bash
-     docker run -it yourusername/sheetsai
+     docker run -dit --name yourcontainername yourusername/sheetsai
 ```
-Note to those using the docker setup, some changes still need to be made to allow users to import their own csv files into the data folder. These changes will be made soon.
+ 3. Next, use the following command to copy over your files into the data folder inside the docker container.
+``` bash
+     docker cp filename.csv yourcontainername:/app/data
+``` 
+ 4. You can now attach to the container using the following command. Note that the introductory message will not appear since we started the container in the background. After running the command below you will see an empty line, I recommend pressing 5 to get the help message to pop up.
+``` bash
+     docker attach yourcontainername
+``` 
+ 5. Once inside the container you can begin saving your csv files to the database using the absolute path. For example you would enter the path below after choosing the Import CSV file action (Action-1)
+``` bash
+     /app/data/filename.csv
+```
+ 6. You can then query your CSV file following the instructions prompted to you. Remember, any time 
+ you need a reminder of the availiable actions, enter 5 when promted to select an action.
+
+ 7. After exiting the application, if you want to start up the same container (which you probably will want to do), run the following command and then repeat step 4.
+``` bash
+     docker start yourcontainername
+```
+ 8. Additionally, if you want to run a shell inside the container you can use the following command.
+``` bash
+    docker exec -it yourcontainername bash
+```
+    This will allow you to interact with the actual application shell which contains the data folder.
+    If you ever want to make sure you copied files over correctly you can use this command and cd into the data folder and view all of the csv files you have using the ls command once inside the folder. 

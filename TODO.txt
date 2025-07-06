@@ -1,8 +1,1 @@
-1. Need to fix the issues with docker, which at the moment have to do with not being able to write to a read only file.
-The file in this case is the SheetsAI.db. 
-    - First thing to look into would be the privileges that a user has based on the DockerFile. The docker init command
-    sets these privileges for you, so reading up on the documentation could help determine what changes need to be made. 
-2. Need to figure out if I need to include database security and if so how.
-3. This is just a question but are the databases shared between anyone? I think the way it works is whenever a user creates a clone of this
-repo they can add any files to the data folder and then the database will be specific to their files. 
-4. Once these issues have been fixed, I should run the application again and test it thoroughouly to ensure application runs smoothly.
+1. I could look into changing the output format of the query results to make it a bit cleaner.
