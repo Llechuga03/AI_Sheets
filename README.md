@@ -43,7 +43,11 @@ In order to use the program, follow the instructions below. Note, the program ma
 ## Usage Instructions -> Docker 🐳
 If you want to skip cloning the repository you can simply login to docker from your terminal and then follow the steps below.
  1. After logging in, navigate to the directory where your csv files are stored.
- 2. Next, run the following command which starts up a container with a unique name in the background.
+ 2. You should then pull the application to the correct location using the command below
+```
+    docker pull llechuga03/sheetsai
+```
+ 4. Next, run the following command which starts up a container with a unique name in the background.
 ``` bash
      docker run -dit --name yourcontainername yourusername/sheetsai
 ```
